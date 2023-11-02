@@ -1,0 +1,22 @@
+[package]
+name = "game_off_2023"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# TODO: Remove dynamic_linking feature on release
+bevy = { version = "0.11" }
+bevy_xpbd_2d = { git = "https://github.com/Jondolf/bevy_xpbd", branch = "main" }
+
+[features]
+dev = ["bevy/bevy_dylib"]
+
+# Enable a small amount of optimization in debug mode
+[profile.dev]
+opt-level = 1
+
+# Enable high optimizations for dependencies (incl. Bevy), but not for our code:
+[profile.dev.package."*"]
+opt-level = 3
