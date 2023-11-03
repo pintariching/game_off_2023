@@ -8,7 +8,7 @@ edition = "2021"
 [dependencies]
 # TODO: Remove dynamic_linking feature on release
 bevy = { version = "0.11" }
-bevy_xpbd_2d = { git = "https://github.com/Jondolf/bevy_xpbd", branch = "main" }
+bevy_xpbd_3d = { git = "https://github.com/Jondolf/bevy_xpbd", branch = "main" }
 
 [features]
 dev = ["bevy/bevy_dylib"]

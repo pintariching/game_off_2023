@@ -1016,7 +1016,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "bevy_xpbd_2d"
+name = "bevy_xpbd_3d"
 version = "0.2.0"
 source = "git+https://github.com/Jondolf/bevy_xpbd?branch=main#5df7ed3233f23981638ccbd115fdaf6b1b257701"
 dependencies = [
@@ -1028,8 +1028,8 @@ dependencies = [
  "indexmap 2.1.0",
  "itertools",
  "nalgebra",
- "parry2d",
- "parry2d-f64",
+ "parry3d",
+ "parry3d-f64",
 ]
 
 [[package]]
@@ -1656,7 +1656,7 @@ name = "game_off_2023"
 version = "0.1.0"
 dependencies = [
  "bevy",
- "bevy_xpbd_2d",
+ "bevy_xpbd_3d",
 ]
 
 [[package]]
@@ -2679,10 +2679,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "parry2d"
+name = "parry3d"
 version = "0.13.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "104ae65232e20477a98f9f1e75ca9850eae24a2ea846a2b1a0af03ad752136ce"
+checksum = "b55dc0e6db79bddbc5fd583569f7356cdcc63e1e9b2b93a9ab70dd8e717160e0"
 dependencies = [
  "approx",
  "arrayvec",
@@ -2701,10 +2701,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "parry2d-f64"
+name = "parry3d-f64"
 version = "0.13.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "82bb5868f03fac0eb9ff77ab24dd6c2e7606b44f0ff745784a49de4e67486e78"
+checksum = "9789fd9474afd3b68cc1379a20b56c221dc73e1d5b21671c0646f78cd5441d8c"
 dependencies = [
  "approx",
  "arrayvec",

@@ -1,7 +1,14 @@
 use bevy::prelude::*;
+use bevy_xpbd_3d::prelude::PhysicsPlugins;
+use player::PlayerPlugin;
+use setup_game::SetupGamePlugin;
+
+mod player;
+mod setup_game;
 
 fn main() {
     App::new()
+        .insert_resource(FixedTime::new_from_secs(1. / 60.))
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
                 title: "Bevy game".to_string(), // ToDo
@@ -15,5 +22,7 @@ fn main() {
             }),
             ..default()
         }))
+        .add_plugins(PhysicsPlugins::new(FixedUpdate))
+        .add_plugins((SetupGamePlugin, PlayerPlugin))
         .run();
 }
