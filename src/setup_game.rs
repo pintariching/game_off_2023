@@ -18,16 +18,28 @@ fn setup(
         PbrBundle {
             mesh: meshes.add(Mesh::from(shape::Plane::from_size(8.0))),
             material: materials.add(Color::rgb(0.3, 0.5, 0.3).into()),
+            transform: Transform::from_xyz(0., -1., 0.),
             ..default()
         },
         RigidBody::Static,
         Collider::cuboid(8.0, 0.005, 8.0),
     ));
 
+    commands.spawn((
+        PbrBundle {
+            mesh: meshes.add(shape::Box::new(2., 1., 2.).into()),
+            material: materials.add(Color::CYAN.into()),
+            transform: Transform::from_xyz(2., 0., 1.),
+            ..default()
+        },
+        RigidBody::Static,
+        Collider::cuboid(2., 1., 2.),
+    ));
+
     // Light
     commands.spawn(PointLightBundle {
         point_light: PointLight {
-            intensity: 1500.0,
+            intensity: 2000.0,
             shadows_enabled: true,
             ..default()
         },

@@ -7,11 +7,9 @@ edition = "2021"
 
 [dependencies]
 # TODO: Remove dynamic_linking feature on release
-bevy = { version = "0.11" }
+bevy = { version = "0.12" }
 bevy_xpbd_3d = { git = "https://github.com/Jondolf/bevy_xpbd", branch = "main" }
-
-[features]
-dev = ["bevy/bevy_dylib"]
+bevy_mod_inverse_kinematics = "0.5"
 
 # Enable a small amount of optimization in debug mode
 [profile.dev]

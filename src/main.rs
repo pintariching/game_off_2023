@@ -8,7 +8,7 @@ mod setup_game;
 
 fn main() {
     App::new()
-        .insert_resource(FixedTime::new_from_secs(1. / 60.))
+        .insert_resource(Time::<Fixed>::from_hz(60.))
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
                 title: "Bevy game".to_string(), // ToDo
