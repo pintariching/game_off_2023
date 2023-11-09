@@ -25,17 +25,6 @@ fn setup(
         Collider::cuboid(8.0, 0.005, 8.0),
     ));
 
-    commands.spawn((
-        PbrBundle {
-            mesh: meshes.add(shape::Box::new(2., 1., 2.).into()),
-            material: materials.add(Color::CYAN.into()),
-            transform: Transform::from_xyz(2., 0., 1.),
-            ..default()
-        },
-        RigidBody::Static,
-        Collider::cuboid(2., 1., 2.),
-    ));
-
     // Light
     commands.spawn(PointLightBundle {
         point_light: PointLight {

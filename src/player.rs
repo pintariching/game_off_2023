@@ -5,7 +5,7 @@ pub struct PlayerPlugin;
 
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, spawn_player)
+        app.add_systems(Startup, (spawn_player, test_model_load))
             .add_systems(FixedUpdate, (update_player, update_target));
     }
 }
@@ -364,4 +364,14 @@ fn update_target(
     //         transform.translation = point;
     //     }
     // }
+}
+
+fn test_model_load(mut commands: Commands, assets: Res<AssetServer>) {
+    let mesh = PbrBundle {
+        mesh: assets.load("test.gltf#Mesh0/Primitive0"),
+        transform: Transform::from_xyz(1., 0., 0.5),
+        ..default()
+    };
+
+    commands.spawn((mesh, AsyncCollider(ComputedCollider::TriMesh)));
 }
