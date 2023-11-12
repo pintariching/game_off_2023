@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use bevy_xpbd_3d::prelude::PhysicsPlugins;
+use bevy_xpbd_3d::prelude::{PhysicsDebugPlugin, PhysicsPlugins};
 use player::PlayerPlugin;
 use setup_game::SetupGamePlugin;
 
@@ -22,6 +22,7 @@ fn main() {
             }),
             ..default()
         }))
+        .add_plugins(PhysicsDebugPlugin::default())
         .add_plugins(PhysicsPlugins::new(FixedUpdate))
         .add_plugins((SetupGamePlugin, PlayerPlugin))
         .run();

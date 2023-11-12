@@ -5,7 +5,7 @@ pub struct PlayerPlugin;
 
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, (spawn_player, test_model_load))
+        app.add_systems(Startup, (spawn_player))
             .add_systems(FixedUpdate, (update_player, update_target));
     }
 }
@@ -342,7 +342,9 @@ fn update_target(
         let hit = if hits.is_empty() {
             continue;
         } else {
-            hits.as_slice().first().unwrap()
+            hits.iter()
+                .min_by(|x, y| x.time_of_impact.total_cmp(&y.time_of_impact))
+                .unwrap()
         };
 
         let point = ray.global_origin() + ray.direction * hit.time_of_impact;
@@ -373,5 +375,8 @@ fn test_model_load(mut commands: Commands, assets: Res<AssetServer>) {
         ..default()
     };
 
-    commands.spawn((mesh, AsyncCollider(ComputedCollider::TriMesh)));
+    commands.spawn((
+        mesh,
+        AsyncSceneCollider::new(Some(ComputedCollider::TriMesh)),
+    ));
 }
